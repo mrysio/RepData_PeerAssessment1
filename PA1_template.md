@@ -1,9 +1,4 @@
 # Reproducible Research: Peer Assessment 1
-*Global options*
-
-```r
-opts_chunk$set(comment=NA, fig.height=5, fig.width=6, fig.align='center')
-```
 
 ### Loading and preprocessing the data
 
@@ -18,7 +13,7 @@ dim(activity)
 ```
 
 ```
-[1] 17568     3
+## [1] 17568     3
 ```
 
 ```r
@@ -26,14 +21,14 @@ summary(activity)
 ```
 
 ```
-     steps                date          interval     
- Min.   :  0.00   2012-10-01:  288   Min.   :   0.0  
- 1st Qu.:  0.00   2012-10-02:  288   1st Qu.: 588.8  
- Median :  0.00   2012-10-03:  288   Median :1177.5  
- Mean   : 37.38   2012-10-04:  288   Mean   :1177.5  
- 3rd Qu.: 12.00   2012-10-05:  288   3rd Qu.:1766.2  
- Max.   :806.00   2012-10-06:  288   Max.   :2355.0  
- NA's   :2304     (Other)   :15840                   
+##      steps                date          interval     
+##  Min.   :  0.00   2012-10-01:  288   Min.   :   0.0  
+##  1st Qu.:  0.00   2012-10-02:  288   1st Qu.: 588.8  
+##  Median :  0.00   2012-10-03:  288   Median :1177.5  
+##  Mean   : 37.38   2012-10-04:  288   Mean   :1177.5  
+##  3rd Qu.: 12.00   2012-10-05:  288   3rd Qu.:1766.2  
+##  Max.   :806.00   2012-10-06:  288   Max.   :2355.0  
+##  NA's   :2304     (Other)   :15840
 ```
 
 ```r
@@ -41,10 +36,10 @@ str(activity)
 ```
 
 ```
-'data.frame':	17568 obs. of  3 variables:
- $ steps   : int  NA NA NA NA NA NA NA NA NA NA ...
- $ date    : Factor w/ 61 levels "2012-10-01","2012-10-02",..: 1 1 1 1 1 1 1 1 1 1 ...
- $ interval: int  0 5 10 15 20 25 30 35 40 45 ...
+## 'data.frame':	17568 obs. of  3 variables:
+##  $ steps   : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ date    : Factor w/ 61 levels "2012-10-01","2012-10-02",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ interval: int  0 5 10 15 20 25 30 35 40 45 ...
 ```
 
 ### What is mean total number of steps taken per day?
@@ -67,7 +62,7 @@ hist(activity_pday$total_steps, xlab= "Total steps per day",
      main="Histogram of the total number of steps taken each day")  
 ```
 
-<img src="./PA1_template_files/figure-html/unnamed-chunk-6-1.png" title="" alt="" style="display: block; margin: auto;" />
+<img src="./PA1_template_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" style="display: block; margin: auto;" />
 ***Calculating mean and median total number of steps taken per day***
 
 ```r
@@ -101,7 +96,7 @@ qplot(x=interval,y=mean_steps,geom="line", data=activity_avg,
       main='Average daily activity pattern', ylab='avg steps taken')   
 ```
 
-<img src="./PA1_template_files/figure-html/unnamed-chunk-9-1.png" title="" alt="" style="display: block; margin: auto;" />
+<img src="./PA1_template_files/figure-html/unnamed-chunk-8-1.png" title="" alt="" style="display: block; margin: auto;" />
 ***Which 5-minute interval contains the maximum number of steps***
 
 ```r
@@ -110,10 +105,10 @@ subset(activity_avg, mean_steps == max(mean_steps),
 ```
 
 ```
-Source: local data frame [1 x 1]
-
-  interval
-1      835
+## Source: local data frame [1 x 1]
+## 
+##   interval
+## 1      835
 ```
 
 ### Imputing missing values
@@ -125,7 +120,7 @@ sum(apply(is.na(activity), 1, sum))
 ```
 
 ```
-[1] 2304
+## [1] 2304
 ```
 ***Filling in all of the missing values in the dataset***
 
@@ -151,7 +146,7 @@ histogram <- hist(activity_fill_pday$total_steps, xlab="Total steps per day",
              main="Histogram of the total number of steps taken each day")
 ```
 
-<img src="./PA1_template_files/figure-html/unnamed-chunk-13-1.png" title="" alt="" style="display: block; margin: auto;" />
+<img src="./PA1_template_files/figure-html/unnamed-chunk-12-1.png" title="" alt="" style="display: block; margin: auto;" />
 ***Summary of both mean and median statistics with and withouth NAs filled.***
 
 ```r
@@ -199,4 +194,4 @@ ggplot(activity_fill_plot, aes(x=interval,y=mean_steps))+
 	ggtitle("Differences in activity patterns between weekdays and weekends")
 ```
 
-<img src="./PA1_template_files/figure-html/unnamed-chunk-16-1.png" title="" alt="" style="display: block; margin: auto;" />
+<img src="./PA1_template_files/figure-html/unnamed-chunk-15-1.png" title="" alt="" style="display: block; margin: auto;" />

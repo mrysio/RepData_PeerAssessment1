@@ -4,10 +4,6 @@ output:
   html_document:
     keep_md: true
 ---  
-*Global options*
-```{r, echo=TRUE}
-opts_chunk$set(comment=NA, fig.height=5, fig.width=6, fig.align='center')
-```
 
 ### Loading and preprocessing the data
 
@@ -33,7 +29,7 @@ activity_pday <- activity %>%
         summarise(total_steps = sum(steps))
 ```
 ***Plotting histogram***
-```{r}
+```{r, echo=TRUE, fig.height=5, fig.width=6, fig.align='center'}
 hist(activity_pday$total_steps, xlab= "Total steps per day",
      main="Histogram of the total number of steps taken each day")  
 ```
@@ -55,7 +51,7 @@ activity_avg <- activity %>%
         summarise(mean_steps=mean(steps,na.rm= TRUE))
 ```
 ***Plotting the average daily activity pattern***
-```{r, echo=TRUE}
+```{r, echo=TRUE, fig.height=5, fig.width=6, fig.align='center'}
 library(ggplot2)
 qplot(x=interval,y=mean_steps,geom="line", data=activity_avg, 
       main='Average daily activity pattern', ylab='avg steps taken')   
@@ -85,7 +81,7 @@ for (i in 1:nrow(activity)) {
 }
 ```
 ***Preparing data for visualisation and plotting histogram***
-```{r}
+```{r, echo=TRUE, fig.height=5, fig.width=6, fig.align='center'}
 activity_fill_pday <- activity_fill %>%  
         group_by(date) %>% 
         summarise(total_steps=sum(steps))
@@ -120,7 +116,7 @@ activity_fill$week <- apply(activity_fill, 1, function(row) {
 activity_fill$week <- as.factor(activity_fill$week)
 ```
 ***Preparing data for visualisation and plotting***
-```{r}
+```{r, echo=TRUE, fig.height=5, fig.width=6, fig.align='center'}
 activity_fill_plot <- activity_fill %>% 
 	group_by(interval, week) %>%
         summarise(mean_steps=mean(steps))
