@@ -4,8 +4,8 @@ output:
   html_document:
     keep_md: true
 ---  
-```{r, echo=FALSE}
-#opcje globalne
+*Global options*
+```{r, echo=TRUE}
 opts_chunk$set(comment=NA, fig.height=5, fig.width=6, fig.align='center')
 ```
 

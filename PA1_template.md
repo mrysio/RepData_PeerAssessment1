@@ -1,5 +1,9 @@
 # Reproducible Research: Peer Assessment 1
+*Global options*
 
+```r
+opts_chunk$set(comment=NA, fig.height=5, fig.width=6, fig.align='center')
+```
 
 ### Loading and preprocessing the data
 
